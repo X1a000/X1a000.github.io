@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/01/08/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="X1ao’s-Blog"><a href="#X1ao’s-Blog" class="headerlink" title="X1ao’s Blog"></a>X1ao’s Blog</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>数组中重复的数字</title>
+    <url>/2021/01/09/%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/</url>
+    <content><![CDATA[<h2 id="找出数组中重复的数"><a href="#找出数组中重复的数" class="headerlink" title="找出数组中重复的数"></a>找出数组中重复的数</h2><hr>
+<blockquote>
+<p>一、在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。<br>数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。<br>请找出数组中任意一个重复的数字。<br>示例 1：<br>输入：<br>[2, 3, 1, 0, 2, 5, 3]<br>输出：2 或 3 </p>
+</blockquote>
+<ol>
+<li>直接hash， 空间O(N)， 时间O(N)</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cnt[<span class="number">100010</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span> (cnt[it]!=<span class="number">0</span>) <span class="keyword">return</span> it;</span><br><span class="line">            cnt[it]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>因为n个数，每个数都在0-(n-1)之间，可以采用直接在给定的空间上hash的方法(原地置换)。时间O(N),空间O(1)</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//交换法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)&#123;</span><br><span class="line">            <span class="keyword">while</span>(nums[i] != i) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] == nums[nums[i]]) <span class="keyword">return</span> nums[i];</span><br><span class="line">                swap(nums[i], nums[nums[i]]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//标记法,负数表示已经遍历过。因为是从0开始，所以标记时+1再取反</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; ++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> idx = (nums[i] &gt;= <span class="number">0</span>) ? (nums[i]) : (-(nums[i]+<span class="number">1</span>));</span><br><span class="line">            <span class="keyword">if</span> (nums[idx] &lt; <span class="number">0</span>) <span class="keyword">return</span> idx;</span><br><span class="line">            nums[idx] = -nums[idx]<span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>二、不修改数组找出重复的数字<br>在一个长度为n+1的数组里的所有数字都在1~n的范围内，所以数组种至少有一个数字是重复的。 请找出数组中任意一个重复的数字，但不能修改输入的数组。例如，如果输入长度为8的数组{2, 3, 5, 4, 3, 2, 6, 7}, 那么对应的输出是重复的数字2或者3。</p>
+</blockquote>
+<ol>
+<li>与上一题相似，直接hash，空间O(n)，时间O(n)</li>
+<li>由于该题数字为1-n，长度为n+1，数字范围&lt;长度，所以可采用二分法，用时间换空间。<br> 将数字取值区间分为两半，易知若取值在[i,j]之间的数大于(j-i+1)个，则[i,j]中必有重复的数。<br> 以此为依据不断二分缩小数字的取值区间，直到缩小为一个数为止。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>剑指offer</category>
+      </categories>
+      <tags>
+        <tag>剑指offer</tag>
+        <tag>数组</tag>
+        <tag>hash</tag>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+</search>

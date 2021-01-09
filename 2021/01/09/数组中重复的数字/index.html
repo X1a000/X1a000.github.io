@@ -20,30 +20,36 @@
     var CONFIG = {"hostname":"x1a000.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="记录自己的成长">
-<meta property="og:type" content="website">
-<meta property="og:title" content="X1ao&#39;s blog">
-<meta property="og:url" content="https://x1a000.github.io/index.html">
+  <meta name="description" content="找出数组中重复的数  一、在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。示例 1：输入：[2, 3, 1, 0, 2, 5, 3]输出：2 或 3    直接hash， 空间O(N)， 时间O(N)  1234567891011class Solution &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组中重复的数字">
+<meta property="og:url" content="https://x1a000.github.io/2021/01/09/%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/index.html">
 <meta property="og:site_name" content="X1ao&#39;s blog">
-<meta property="og:description" content="记录自己的成长">
+<meta property="og:description" content="找出数组中重复的数  一、在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。示例 1：输入：[2, 3, 1, 0, 2, 5, 3]输出：2 或 3    直接hash， 空间O(N)， 时间O(N)  1234567891011class Solution &amp;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-09T13:27:28.000Z">
+<meta property="article:modified_time" content="2021-01-09T14:01:23.086Z">
 <meta property="article:author" content="X1a000">
+<meta property="article:tag" content="剑指offer">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="hash">
+<meta property="article:tag" content="二分">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://x1a000.github.io/">
+<link rel="canonical" href="https://x1a000.github.io/2021/01/09/%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>X1ao's blog</title>
+  <title>数组中重复的数字 | X1ao's blog</title>
   
 
 
@@ -179,9 +185,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -197,10 +204,9 @@
       <meta itemprop="name" content="X1ao's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/09/%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0%E5%AD%97/" class="post-title-link" itemprop="url">数组中重复的数字</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          数组中重复的数字
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -233,7 +239,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="找出数组中重复的数"><a href="#找出数组中重复的数" class="headerlink" title="找出数组中重复的数"></a>找出数组中重复的数</h2><hr>
+        <h2 id="找出数组中重复的数"><a href="#找出数组中重复的数" class="headerlink" title="找出数组中重复的数"></a>找出数组中重复的数</h2><hr>
 <blockquote>
 <p>一、在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。<br>数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。<br>请找出数组中任意一个重复的数字。<br>示例 1：<br>输入：<br>[2, 3, 1, 0, 2, 5, 3]<br>输出：2 或 3 </p>
 </blockquote>
@@ -253,88 +259,36 @@
 <li>由于该题数字为1-n，长度为n+1，数字范围&lt;长度，所以可采用二分法，用时间换空间。<br> 将数字取值区间分为两半，易知若取值在[i,j]之间的数大于(j-i+1)个，则[i,j]中必有重复的数。<br> 以此为依据不断二分缩小数字的取值区间，直到缩小为一个数为止。</li>
 </ol>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/%E5%89%91%E6%8C%87offer/" rel="tag"># 剑指offer</a>
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+              <a href="/tags/hash/" rel="tag"># hash</a>
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://x1a000.github.io/2021/01/08/hello-world/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="X1a000">
-      <meta itemprop="description" content="记录自己的成长">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="X1ao's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/08/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-08 17:27:04 / 修改时间：17:36:04" itemprop="dateCreated datePublished" datetime="2021-01-08T17:27:04+08:00">2021-01-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="X1ao’s-Blog"><a href="#X1ao’s-Blog" class="headerlink" title="X1ao’s Blog"></a>X1ao’s Blog</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/08/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -387,6 +341,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%BE%E5%87%BA%E6%95%B0%E7%BB%84%E4%B8%AD%E9%87%8D%E5%A4%8D%E7%9A%84%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">找出数组中重复的数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
